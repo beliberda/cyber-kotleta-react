@@ -1,0 +1,16 @@
+.button-default {
+    padding: 20px 40px;
+    font-size: 24px;
+    background-color: #2d6bbb;
+    color: white;
+    transition: transform 0.1s;
+    border-radius: 20px;
+}
+
+.button-default:hover {
+    transform: scale(1.03);
+}
+
+.button-default:active {
+    transform: scale(0.98);
+}
