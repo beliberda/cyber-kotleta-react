@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/cyber-kotleta-react/">
         <Routes>
           <Route path="/" element={<GreenRedLight />} />
           <Route path="/test2" element={<Test2 />} />
