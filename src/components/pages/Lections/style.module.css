@@ -1,0 +1,13 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+}
+
+.lection {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}

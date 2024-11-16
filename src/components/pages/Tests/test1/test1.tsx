@@ -1,9 +1,9 @@
-import Header from "@/components/widjets/Header/header";
 import "./style.css";
 import ButtonDefault from "@/components/shared/UI/Buttons.tsx/buttons";
 import { useEffect, useState } from "react";
 import close from "@assets/icons/close.svg";
-function GreenRedLight() {
+
+function Test1() {
   const [light, setLight] = useState("red");
   const [timeResult, setTimeResult] = useState<string>("~");
   const [showModal, setShowModal] = useState(false);
@@ -49,7 +49,6 @@ function GreenRedLight() {
 
   return (
     <>
-      <Header />
       <h1 style={{ textAlign: "center" }}>Green Red Light</h1>
       <main className="main container">
         {showModal && (
@@ -84,4 +83,4 @@ function GreenRedLight() {
   );
 }
 
-export default GreenRedLight;
+export default Test1;
