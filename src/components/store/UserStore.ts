@@ -1,17 +1,17 @@
-import { IUser } from "@/components/interfaces/interfaces";
+import {
+  ILoginData,
+  IRegistrationData,
+  IUser,
+} from "@/components/interfaces/interfaces";
+import UserService from "@/components/services/UserService";
 import { makeAutoObservable } from "mobx";
-
-type authData = {
-  email: string;
-  password: string;
-};
 
 interface IUserStore {
   isAuth: boolean;
   user: IUser;
 
-  login: (data: authData) => void;
-  registration: (data: authData) => void;
+  login: (data: ILoginData) => void;
+  registration: (data: IRegistrationData) => void;
 }
 class UserStore implements IUserStore {
   constructor() {
@@ -22,10 +22,10 @@ class UserStore implements IUserStore {
     id: 0,
     email: "",
     password: "",
-    role: "admin",
+    role: "ADMIN",
   };
 
-  async login(data: authData) {
+  async login(data: ILoginData) {
     if (data.email === "admin@gmail.com" && data.password === "password") {
       this.isAuth = true;
       this.user = { ...this.user, email: data.email, password: data.password };
@@ -34,15 +34,16 @@ class UserStore implements IUserStore {
       // window.location.pathname = "/test1";
     }
   }
-  async registration(data: authData) {
-    // Simulate registration logic
-    // Here you can add your own registration logic
-    this.isAuth = true;
-    this.user = {
-      ...this.user,
-      email: data.email,
-      password: data.password,
-    };
+  async registration(data: IRegistrationData) {
+    UserService.register(data)
+      .then((res) => {
+        this.user = res.data;
+        this.isAuth = true;
+        console.log("Registration successful");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }
 

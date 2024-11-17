@@ -3,7 +3,7 @@ import s from "./style.module.css";
 import { useEffect, useState } from "react";
 
 import UserStore from "@/components/store/UserStore";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { ButtonDefault } from "@/components/shared/UI/Buttons.tsx/buttons";
 
@@ -58,6 +58,10 @@ function Login() {
       >
         Log In
       </ButtonDefault>
+      <div className={s.registration}>
+        <h2>Нет аккаунта?</h2>
+        <Link to="/registration">Зарегистрироваться</Link>
+      </div>
     </main>
   );
 }
