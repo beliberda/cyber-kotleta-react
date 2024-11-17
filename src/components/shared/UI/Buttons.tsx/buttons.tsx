@@ -18,4 +18,20 @@ const ButtonDefault: FunctionComponent<ButtonDefaultProps> = ({
   );
 };
 
-export default ButtonDefault;
+interface ButtonIconProps extends ButtonDefaultProps {
+  icon: string;
+}
+
+const ButtonIcon: FunctionComponent<ButtonIconProps> = ({
+  icon,
+  handlClick,
+  styles,
+}) => {
+  return (
+    <button className={s["button-icon"]} style={styles} onClick={handlClick}>
+      <img src={icon} alt="" />
+    </button>
+  );
+};
+
+export { ButtonDefault, ButtonIcon };

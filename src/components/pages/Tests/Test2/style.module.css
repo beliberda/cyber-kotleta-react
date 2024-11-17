@@ -1,0 +1,31 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    gap: 40px;
+}
+
+.level {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.test-block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+
+}
+
+.color-block {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background-color: black;
+}

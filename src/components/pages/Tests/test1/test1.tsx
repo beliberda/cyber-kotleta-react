@@ -1,7 +1,8 @@
 import "./style.css";
-import ButtonDefault from "@/components/shared/UI/Buttons.tsx/buttons";
+
 import { useEffect, useState } from "react";
 import close from "@assets/icons/close.svg";
+import { ButtonDefault } from "@/components/shared/UI/Buttons.tsx/buttons";
 
 function Test1() {
   const [light, setLight] = useState("red");

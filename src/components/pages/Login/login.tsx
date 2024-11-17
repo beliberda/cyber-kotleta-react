@@ -1,10 +1,11 @@
 import { InputDefault } from "@/components/shared/UI/Inputs/Inputs";
 import s from "./style.module.css";
 import { useEffect, useState } from "react";
-import ButtonDefault from "@/components/shared/UI/Buttons.tsx/buttons";
+
 import UserStore from "@/components/store/UserStore";
 import { useNavigate } from "react-router-dom";
 import { observer } from "mobx-react-lite";
+import { ButtonDefault } from "@/components/shared/UI/Buttons.tsx/buttons";
 
 function Login() {
   const navigate = useNavigate();

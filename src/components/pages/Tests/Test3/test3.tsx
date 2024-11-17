@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-import ButtonDefault from "@/components/shared/UI/Buttons.tsx/buttons";
 import { random } from "@/components/shared/utils/random";
 import s from "./style.module.css";
 import timeFormat from "@/components/shared/utils/timeFormat";
+import { ButtonDefault } from "@/components/shared/UI/Buttons.tsx/buttons";
 
 class dynamicTimer {
   triggerTime = 0;

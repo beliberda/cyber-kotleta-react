@@ -1,4 +1,4 @@
-import Test1 from "@/components/pages/Tests/test1/test1";
+import Test1 from "@/components/pages/Tests/Test1/test1";
 import Login from "@/components/pages/Login/login";
 import Test2 from "@/components/pages/Tests/Test2/test2";
 import Test3 from "@/components/pages/Tests/Test3/test3";
