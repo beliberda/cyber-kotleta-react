@@ -2,7 +2,7 @@ const navMain = [
   { title: "Главная", path: "/main" },
   { title: "Лекции", path: "/lections" },
   { title: "Тесты", path: "/tests" },
-  { title: "Контакты", path: "/contacts" },
+  { title: "Контакты", path: "/profile" },
 ];
 
 const navTests = [

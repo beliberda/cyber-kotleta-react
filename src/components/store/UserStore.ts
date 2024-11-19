@@ -4,13 +4,16 @@ import {
   IUser,
 } from "@/components/interfaces/interfaces";
 import UserService from "@/components/services/UserService";
-import { makeAutoObservable } from "mobx";
+import { AxiosResponse } from "axios";
+import { jwtDecode } from "jwt-decode";
+import { makeAutoObservable, toJS } from "mobx";
 
 interface IUserStore {
   isAuth: boolean;
   user: IUser;
 
   login: (data: ILoginData) => void;
+  logout: () => void;
   registration: (data: IRegistrationData) => void;
 }
 class UserStore implements IUserStore {
@@ -21,18 +24,38 @@ class UserStore implements IUserStore {
   user: IUser = {
     id: 0,
     email: "",
-    password: "",
-    role: "ADMIN",
+    roles: [],
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
   };
 
   async login(data: ILoginData) {
-    if (data.email === "admin@gmail.com" && data.password === "password") {
-      this.isAuth = true;
-      this.user = { ...this.user, email: data.email, password: data.password };
-      console.log("Доступ разрешен");
+    console.log(toJS(this.user));
+    UserService.login(data)
+      .then((res) => {
+        localStorage.setItem("token", res.data.token);
+        this.user = jwtDecode(res.data.token);
+        console.log("user ", toJS(this.user));
 
-      // window.location.pathname = "/test1";
-    }
+        this.isAuth = true;
+      })
+      .catch((err: AxiosResponse) => {
+        console.log(err.status);
+      });
+  }
+
+  async logout() {
+    this.user = {
+      id: 0,
+      email: "",
+      roles: [],
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+    };
+    this.isAuth = false;
+    localStorage.removeItem("token");
   }
   async registration(data: IRegistrationData) {
     UserService.register(data)
@@ -41,8 +64,8 @@ class UserStore implements IUserStore {
         this.isAuth = true;
         console.log("Registration successful");
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((err: AxiosResponse) => {
+        console.log(err.status);
       });
   }
 }

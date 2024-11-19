@@ -6,7 +6,7 @@ function TestsPage() {
   return (
     <>
       <Header navigations={navMain} />
-      <Header navigations={navTests} />
+      <Header navigations={navTests} isLogoutActive={false} />
       <Outlet />
     </>
   );

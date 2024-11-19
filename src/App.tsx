@@ -9,6 +9,7 @@ import LectionsPage from "@/components/pages/Lections/lections";
 import TestsPage from "@/components/pages/Tests/tests";
 import MainPage from "@/components/pages/Main/main";
 import Registration from "@/components/pages/Registration/registration";
+import Profile from "@/components/pages/Profile/profile";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path="/lections" element={<LectionsPage />} />
             <Route path="/main" element={<MainPage />} />
-            <Route path="/contacts" element={<MainPage />} />
+            <Route path="/profile" element={<Profile />} />
 
             <Route path="/tests" element={<TestsPage />}>
               <Route path="/tests/test1" element={<Test1 />} />

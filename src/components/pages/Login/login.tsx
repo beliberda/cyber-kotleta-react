@@ -29,8 +29,8 @@ function Login() {
     UserStore.login(formData);
   };
   useEffect(() => {
-    if (UserStore.isAuth) {
-      navigate("/lections");
+    if (UserStore.isAuth && localStorage.getItem("token")) {
+      navigate("/profile");
     }
   }, [UserStore.isAuth]);
   return (

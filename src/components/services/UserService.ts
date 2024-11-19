@@ -1,13 +1,15 @@
-import { IRegistrationData, IUser } from "./../interfaces/interfaces";
+import {
+  ILoginData,
+  ILoginRes,
+  IRegistrationData,
+  IUser,
+} from "./../interfaces/interfaces";
 import { $api } from "@/components/http/http";
 import { AxiosResponse } from "axios";
 
 class UserService {
-  static async login(
-    email: number,
-    password: string
-  ): Promise<AxiosResponse<IUser, any>> {
-    return $api.post("/login", { email, password });
+  static async login(data: ILoginData): Promise<AxiosResponse<ILoginRes, any>> {
+    return $api.post("/auth/login", data);
   }
   static async register(
     data: IRegistrationData

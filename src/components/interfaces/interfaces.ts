@@ -1,11 +1,21 @@
 type TRoles = "ADMIN" | "USER" | "TUTOR";
-
+export interface IRole {
+  id: number;
+  value: TRoles;
+  description: "string";
+}
 export interface IUser {
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
   id: number;
   email: string;
-  password: string;
-  role: TRoles;
+  roles: IRole[];
 }
+export interface ILoginRes {
+  token: string;
+}
+
 export interface ILoginData {
   email: string;
   password: string;
