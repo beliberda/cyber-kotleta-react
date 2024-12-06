@@ -24,10 +24,11 @@ class UserStore implements IUserStore {
   user: IUser = {
     id: 0,
     email: "",
-    roles: [],
+    roles: [{ id: 0, value: "USER", description: "" }],
     firstName: "",
     lastName: "",
     phoneNumber: "",
+    rating: 0,
   };
 
   async login(data: ILoginData) {
@@ -53,6 +54,7 @@ class UserStore implements IUserStore {
       firstName: "",
       lastName: "",
       phoneNumber: "",
+      rating: 0,
     };
     this.isAuth = false;
     localStorage.removeItem("token");
@@ -60,9 +62,9 @@ class UserStore implements IUserStore {
   async registration(data: IRegistrationData) {
     UserService.register(data)
       .then((res) => {
-        this.user = res.data;
+        this.user = jwtDecode(res.data.token);
         this.isAuth = true;
-        console.log("Registration successful");
+        console.log("Registration successful", toJS(this.user));
       })
       .catch((err: AxiosResponse) => {
         console.log(err.status);

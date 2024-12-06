@@ -2,7 +2,7 @@ type TRoles = "ADMIN" | "USER" | "TUTOR";
 export interface IRole {
   id: number;
   value: TRoles;
-  description: "string";
+  description: string;
 }
 export interface IUser {
   firstName: string;
@@ -11,8 +11,9 @@ export interface IUser {
   id: number;
   email: string;
   roles: IRole[];
+  rating: number;
 }
-export interface ILoginRes {
+export interface ITokenRes {
   token: string;
 }
 

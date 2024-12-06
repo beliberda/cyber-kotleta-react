@@ -3,7 +3,7 @@ import s from "./style.module.css";
 import { Fragment, useEffect, useState } from "react";
 
 import UserStore from "@/components/store/UserStore";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { ButtonDefault } from "@/components/shared/UI/Buttons.tsx/buttons";
 import { IRegistrationData } from "@/components/interfaces/interfaces";
@@ -74,31 +74,36 @@ function Registration() {
   }, [UserStore.isAuth]);
   return (
     <main className={s.login}>
-      {registrationInputs.map((input) => {
-        return (
-          <Fragment key={input.name}>
-            <InputDefault
-              handleInputChange={(e) => {
-                setFormData({
-                  ...formData,
-                  [input.name]: e.currentTarget.value,
-                });
-              }}
-              type={input.type}
-              label={input.label}
-              placeholder={input.placeholder}
-              className={isError ? "input-err" : ""}
-            />
-          </Fragment>
-        );
-      })}
-      <ButtonDefault
-        handlClick={() => {
-          checkLogin();
-        }}
-      >
-        Log In
-      </ButtonDefault>
+      <h1>Регистрация</h1>
+      <div className={s["font-reg"]}>
+        {registrationInputs.map((input) => {
+          return (
+            <Fragment key={input.name}>
+              <InputDefault
+                handleInputChange={(e) => {
+                  setFormData({
+                    ...formData,
+                    [input.name]: e.currentTarget.value,
+                  });
+                }}
+                type={input.type}
+                label={input.label}
+                placeholder={input.placeholder}
+                className={isError ? "input-err" : ""}
+              />
+            </Fragment>
+          );
+        })}
+        <ButtonDefault
+          handlClick={() => {
+            checkLogin();
+          }}
+        >
+          Зарегистрироваться
+        </ButtonDefault>
+
+        <Link to="/">на страницу входа</Link>
+      </div>
     </main>
   );
 }

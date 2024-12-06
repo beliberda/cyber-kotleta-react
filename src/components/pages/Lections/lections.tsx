@@ -1,6 +1,4 @@
-import Header from "@/components/widjets/Header/header";
 import s from "./style.module.css";
-import { navMain } from "@/components/routes/navigations";
 
 const lections = [
   {
@@ -32,7 +30,6 @@ const lections = [
 function LectionsPage() {
   return (
     <>
-      <Header navigations={navMain} />
       <main className={s.main + " container"}>
         <h1>Лекции</h1>
         {lections.map((lection, index) => (

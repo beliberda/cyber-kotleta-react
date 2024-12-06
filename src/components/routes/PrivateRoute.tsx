@@ -1,4 +1,5 @@
 import UserStore from "@/components/store/UserStore";
+import { observer } from "mobx-react-lite";
 import { Navigate, Outlet } from "react-router-dom";
 
 function PrivateRoute() {
@@ -9,4 +10,4 @@ function PrivateRoute() {
   );
 }
 
-export default PrivateRoute;
+export default observer(PrivateRoute);

@@ -1,0 +1,12 @@
+:root {
+
+    /* background */
+    --background-gray: #b8b8b8;
+    --background-black: #000000;
+    --background-white: white;
+    --background-light-blue: #2d6bbb;
+    /* text colors */
+
+    --text-white: white;
+    --text-black: #000000;
+}

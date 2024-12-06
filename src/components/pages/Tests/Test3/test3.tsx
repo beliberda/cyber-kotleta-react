@@ -2,57 +2,33 @@ import { useEffect, useRef, useState } from "react";
 
 import { random } from "@/components/shared/utils/random";
 import s from "./style.module.css";
-import timeFormat from "@/components/shared/utils/timeFormat";
-import { ButtonDefault } from "@/components/shared/UI/Buttons.tsx/buttons";
-
-class dynamicTimer {
-  triggerTime = 0;
-  callback = () => {};
-  timer: any;
-  constructor(func: () => void, delay: number) {
-    this.callback = func;
-    this.triggerTime = +new Date() + delay;
-    this.timer = 0;
-    this.updateTimer();
-  }
-
-  updateTimer() {
-    clearTimeout(this.timer);
-    let delay = this.triggerTime - Number(new Date());
-    console.log("Current delay: ", delay);
-    this.timer = setTimeout(this.callback, delay);
-    return this;
-  }
-
-  addTime(delay: number) {
-    this.triggerTime -= delay;
-    this.updateTimer();
-    return this;
-  }
-}
+import {
+  ButtonDefault,
+  ButtonIcon,
+} from "@/components/shared/UI/Buttons.tsx/buttons";
+import useTimer from "@/components/shared/utils/useTimer";
+import resetIcon from "@assets/icons/resetTime.svg";
 
 function Test3() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [trainNum, setTrainNum] = useState<number>(0);
-  const [start, setStart] = useState<boolean>(false);
+  const [isStart, setIsStart] = useState<boolean>(false);
   const [timeLevel, setTimeLevel] = useState<number>(0);
   const [count, setCount] = useState<number>(0);
+
+  const { milliseconds, seconds, reset, stop, zero } = useTimer(isStart);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const [timerCurrent, setTimerCurrent] = useState("00:00:00");
-
   const handleStartChange = () => {
-    setStart((prevStart) => !prevStart);
+    stop();
+    setIsStart((prevStart) => !prevStart);
   };
 
   useEffect(() => {
-    const finalTimer = setInterval(() => {
-      let ms = 0;
-      setTimerCurrent(timeFormat(ms));
-    }, 1);
-    if (start) {
+    if (isStart) {
+      zero();
       const updateTimer = () => {
         if (containerRef.current) {
           const randomX = random(100, containerRef.current.clientWidth - 100);
@@ -77,25 +53,23 @@ function Test3() {
       }
       setTimeLevel(0);
       setCount(0);
+      stop();
     }
-    if (!start) {
-      clearInterval(finalTimer);
-    }
+
     return () => {
       if (timerRef.current) {
         clearTimeout(timerRef.current);
-        clearInterval(finalTimer);
       }
     };
-  }, [start, timeLevel]);
+  }, [isStart, timeLevel]);
 
   return (
     <>
-      <h1 style={{ textAlign: "center" }}>Саккады</h1>
       <main ref={containerRef} className={s["main"] + " container"}>
+        <h1 style={{ textAlign: "center" }}>Саккады</h1>
         <div
           style={{
-            display: start ? "flex" : "none",
+            display: isStart ? "flex" : "none",
             top: position.y,
             left: position.x,
           }}
@@ -103,10 +77,21 @@ function Test3() {
         >
           {trainNum}
         </div>
-        <ButtonDefault handlClick={handleStartChange}>
-          {start ? "Stop test" : "Start test"}
-        </ButtonDefault>
-        {/* <div className={s["timer"]}>{timerCurrent}</div> */}
+        <div className={s["button-wrapper"]}>
+          <ButtonDefault handlClick={handleStartChange}>
+            {isStart ? "Stop test" : "Start test"}
+          </ButtonDefault>
+          <ButtonIcon
+            handlClick={() => {
+              reset();
+            }}
+            icon={resetIcon}
+          />
+        </div>
+
+        <div className={s["timer"]}>
+          {seconds}:{milliseconds} сек
+        </div>
       </main>
     </>
   );

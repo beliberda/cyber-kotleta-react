@@ -50,8 +50,8 @@ function Test2() {
 
   return (
     <>
-      <h1 style={{ textAlign: "center" }}>Тест на многозадачность</h1>
       <main className={s.main + " container"}>
+        <h1 style={{ textAlign: "center" }}>Тест на многозадачность</h1>
         <div className={s["test-block"]}>
           <ArrowIcon degrees={testData.degrees} />
           <div

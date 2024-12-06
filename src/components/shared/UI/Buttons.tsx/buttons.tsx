@@ -19,17 +19,20 @@ const ButtonDefault: FunctionComponent<ButtonDefaultProps> = ({
 };
 
 interface ButtonIconProps extends ButtonDefaultProps {
-  icon: string;
+  icon?: string;
 }
 
 const ButtonIcon: FunctionComponent<ButtonIconProps> = ({
   icon,
   handlClick,
   styles,
+  children,
 }) => {
   return (
     <button className={s["button-icon"]} style={styles} onClick={handlClick}>
-      <img src={icon} alt="" />
+      {icon && <img src={icon} alt="" />}
+
+      {children}
     </button>
   );
 };

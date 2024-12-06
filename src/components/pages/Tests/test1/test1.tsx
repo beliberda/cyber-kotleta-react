@@ -50,8 +50,8 @@ function Test1() {
 
   return (
     <>
-      <h1 style={{ textAlign: "center" }}>Green Red Light</h1>
       <main className="main container">
+        <h1 style={{ textAlign: "center" }}>Green Red Light</h1>
         {showModal && (
           <div className="light-container">
             <ButtonDefault

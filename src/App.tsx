@@ -10,6 +10,9 @@ import TestsPage from "@/components/pages/Tests/tests";
 import MainPage from "@/components/pages/Main/main";
 import Registration from "@/components/pages/Registration/registration";
 import Profile from "@/components/pages/Profile/profile";
+import Test4 from "@/components/pages/Tests/Test4/test4";
+import Header from "@/components/widjets/Header/header";
+import { navMain } from "@/components/routes/navigations";
 
 function App() {
   return (
@@ -19,14 +22,17 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/registration" element={<Registration />} />
           <Route element={<PrivateRoute />}>
-            <Route path="/lections" element={<LectionsPage />} />
-            <Route path="/main" element={<MainPage />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/" element={<Header navigations={navMain} />}>
+              <Route path="/lections" element={<LectionsPage />} />
+              <Route path="/main" element={<MainPage />} />
+              <Route path="/profile" element={<Profile />} />
 
-            <Route path="/tests" element={<TestsPage />}>
-              <Route path="/tests/test1" element={<Test1 />} />
-              <Route path="/tests/test2" element={<Test2 />} />
-              <Route path="/tests/test3" element={<Test3 />} />
+              <Route path="/tests" element={<TestsPage />}>
+                <Route path="/tests/test1" element={<Test1 />} />
+                <Route path="/tests/test2" element={<Test2 />} />
+                <Route path="/tests/test3" element={<Test3 />} />
+                <Route path="/tests/test4" element={<Test4 />} />
+              </Route>
             </Route>
           </Route>
         </Routes>

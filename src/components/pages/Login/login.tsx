@@ -16,8 +16,6 @@ function Login() {
   const [isError, setIsError] = useState(false);
 
   const checkLogin = () => {
-    // TODO: Implement login logic
-
     if (formData.email === "" || formData.password === "") {
       setIsError(true);
 

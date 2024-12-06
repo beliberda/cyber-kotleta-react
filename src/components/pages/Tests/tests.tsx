@@ -1,14 +1,13 @@
-import { navMain, navTests } from "@/components/routes/navigations";
-import Header from "@/components/widjets/Header/header";
+import { navTests } from "@/components/routes/navigations";
+import Sidebar from "@/components/widjets/Sidebar/sidebar";
 import { Outlet } from "react-router-dom";
 
 function TestsPage() {
   return (
-    <>
-      <Header navigations={navMain} />
-      <Header navigations={navTests} isLogoutActive={false} />
+    <div style={{ display: "flex", flexGrow: "1" }}>
+      <Sidebar navigations={navTests} />
       <Outlet />
-    </>
+    </div>
   );
 }
 
