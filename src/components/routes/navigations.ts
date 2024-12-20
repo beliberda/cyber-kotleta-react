@@ -22,6 +22,22 @@ const navTests = [
     title: "Круги",
     path: "/tests/test4",
   },
+  {
+    title: "Скорость принятия решения",
+    path: "/tests/test5",
+  },
+  {
+    title: "Рабочая память",
+    path: "/tests/test6",
+  },
+  {
+    title: "Аристотелевская выносливость",
+    path: "/tests/test7",
+  },
+  {
+    title: "Восприятие стресса",
+    path: "/tests/test8",
+  },
 ];
 
 export { navMain, navTests };

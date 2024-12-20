@@ -43,6 +43,9 @@ class UserStore implements IUserStore {
       })
       .catch((err: AxiosResponse) => {
         console.log(err.status);
+      })
+      .finally(() => {
+        this.isAuth = true;
       });
   }
 
@@ -68,6 +71,9 @@ class UserStore implements IUserStore {
       })
       .catch((err: AxiosResponse) => {
         console.log(err.status);
+      })
+      .finally(() => {
+        this.isAuth = true;
       });
   }
 }

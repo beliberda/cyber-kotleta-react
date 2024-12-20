@@ -13,6 +13,10 @@ import Profile from "@/components/pages/Profile/profile";
 import Test4 from "@/components/pages/Tests/Test4/test4";
 import Header from "@/components/widjets/Header/header";
 import { navMain } from "@/components/routes/navigations";
+import TestSpeed from "@/components/pages/Tests/TestSpeed/testSpeed";
+import TestMemory from "@/components/pages/Tests/TestMemory/testMemory";
+import TestAristotelStamin from "@/components/pages/Tests/TestAristotelStamin/testAristotelStamin";
+import TestLabirinth from "@/components/pages/Tests/TestLabirinth/testLabirinth";
 
 function App() {
   return (
@@ -32,6 +36,10 @@ function App() {
                 <Route path="/tests/test2" element={<Test2 />} />
                 <Route path="/tests/test3" element={<Test3 />} />
                 <Route path="/tests/test4" element={<Test4 />} />
+                <Route path="/tests/test5" element={<TestSpeed />} />
+                <Route path="/tests/test6" element={<TestMemory />} />
+                <Route path="/tests/test7" element={<TestAristotelStamin />} />
+                <Route path="/tests/test8" element={<TestLabirinth />} />
               </Route>
             </Route>
           </Route>

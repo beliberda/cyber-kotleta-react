@@ -38,7 +38,7 @@ function Test2() {
         color: randomColors[random(0, randomColors.length)],
         degrees: degrees[random(0, degrees.length)],
       });
-    }, 1000 - level * 50);
+    }, 3000 - level * 100);
 
     if (!isStart) {
       clearInterval(testInterval);

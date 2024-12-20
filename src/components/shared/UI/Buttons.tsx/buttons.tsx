@@ -4,15 +4,22 @@ interface ButtonDefaultProps {
   handlClick?: () => void;
   children?: ReactNode;
   styles?: CSSProperties;
+  disabled?: boolean;
 }
 
 const ButtonDefault: FunctionComponent<ButtonDefaultProps> = ({
   children,
   styles,
   handlClick,
+  disabled = false,
 }) => {
   return (
-    <button className={s["button-default"]} onClick={handlClick} style={styles}>
+    <button
+      disabled={disabled}
+      className={s["button-default"]}
+      onClick={handlClick}
+      style={styles}
+    >
       {children}
     </button>
   );
