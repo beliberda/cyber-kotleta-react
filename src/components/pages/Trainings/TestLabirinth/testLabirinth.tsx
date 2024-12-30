@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import s from "./style.module.css";
 import { ButtonDefault } from "@/components/shared/UI/Buttons.tsx/buttons";
-import Labirinth from "@/components/pages/Tests/TestLabirinth/labirinth";
+import Labirinth from "@/components/pages/Trainings/TestLabirinth/labirinth";
 import useCountdownTimer from "@/components/shared/utils/useCountdownTimer";
 
 const TestLabirinth: FunctionComponent = () => {

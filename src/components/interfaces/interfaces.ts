@@ -12,6 +12,7 @@ export interface IUser {
   email: string;
   roles: IRole[];
   rating: number;
+  tests: ITest[];
 }
 export interface ITokenRes {
   token: string;
@@ -28,3 +29,10 @@ export interface IRegistrationData extends ILoginData {
 }
 
 export interface ILections {}
+
+export interface ITest {
+  id: number;
+  title: string;
+  rating: number;
+  tryCount: number;
+}

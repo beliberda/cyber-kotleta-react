@@ -6,7 +6,7 @@ import {
 } from "@/components/shared/UI/Buttons.tsx/buttons";
 import { random } from "@/components/shared/utils/random";
 
-import { infoMass, randomCircle } from "@/components/pages/Tests/utils";
+import { infoMass, randomCircle } from "@/components/pages/Trainings/utils";
 import ArrowIcon from "@/assets/icons/ArrowIcon";
 interface Test4Props {}
 

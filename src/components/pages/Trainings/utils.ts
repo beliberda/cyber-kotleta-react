@@ -1,4 +1,7 @@
-import { ICircleItem } from "@/components/pages/Tests/Test4/interfaces";
+import {
+  ICircleItem,
+  ShapeType,
+} from "@/components/pages/Trainings/Test4/interfaces";
 import { random } from "@/components/shared/utils/random";
 
 const infoMass = [
@@ -48,7 +51,7 @@ function detectCollision(sq1: ICircleItem, sq2: ICircleItem) {
 
   return false;
 }
-function checkCoordinates(
+function generateCircle(
   circle: ICircleItem[],
   width: number,
   height: number,
@@ -72,8 +75,7 @@ function checkCoordinates(
     y1 = random(20, height);
     counter++;
     if (counter % 100 === 0) {
-      radiusNew = random(20, radiusNew - 10);
-      console.log("Уменьшаем радиус до", radiusNew);
+      radiusNew -= 10;
     }
     // if (counter > 10000) {
     //   console.log(x1, y1);
@@ -83,23 +85,44 @@ function checkCoordinates(
   }
   return { x1, y1, radiusNew };
 }
-function randomCircle(n: number, width: number = 200, height: number = 200) {
-  console.log("Random Circle ");
-
+function randomCircle(
+  n: number = 5,
+  width: number = 200,
+  height: number = 200,
+  colorList: string[] = ["red", "blue"],
+  padColumn: number = 80,
+  padInline: number = 40
+) {
   const circles: ICircleItem[] = [];
-  let correctCircle = new Object();
-  width -= 40;
-  height -= 80;
+  width -= padInline;
+  height -= padColumn;
 
-  for (let i = 0; i < n; i++) {
+  let redCount = random(n / 2 - 1, n / 2 + 1);
+  let blueCount = n - redCount;
+
+  if (Math.abs(redCount - blueCount) > 2) {
+    if (redCount > blueCount) {
+      const diff = redCount - blueCount;
+      redCount -= diff - 2; // Subtract the difference minus 2
+      blueCount += diff - 2; // Add the difference minus 2
+    } else {
+      const diff = blueCount - redCount;
+      blueCount -= diff - 2; // Subtract the difference minus 2
+      redCount += diff - 2; // Add the difference minus 2
+    }
+  }
+
+  for (let i = 0; i < blueCount; i++) {
     const radius = random(40, 120);
-    const { x1, y1, radiusNew } = checkCoordinates(
+    const { x1, y1, radiusNew } = generateCircle(
       circles,
       width,
       height,
       radius
     );
-    let newColor = infoMass[random(0, infoMass.length - 1)].color;
+    let newColor = "blue";
+    // TODO сделать рандомизацию форм фигур, добавить массив фигур с path
+    let randomType: ShapeType = "circle";
     // TODO сделать инкрементацию цветов с проверкой и возвращать с самым большим количеством
     // if (correctCircle.hasOwnProperty(newColor)) {
     //   correctCircle[newColor] += 1;
@@ -112,10 +135,38 @@ function randomCircle(n: number, width: number = 200, height: number = 200) {
       x: x1,
       y: y1,
       radius: radiusNew,
+      type: randomType,
+      color: newColor,
+    });
+  }
+  for (let i = 0; i < redCount; i++) {
+    const radius = random(40, 120);
+    const { x1, y1, radiusNew } = generateCircle(
+      circles,
+      width,
+      height,
+      radius
+    );
+    let newColor = "red";
+    // TODO сделать рандомизацию форм фигур, добавить массив фигур с path
+    let randomType: ShapeType = "circle";
+    // TODO сделать инкрементацию цветов с проверкой и возвращать с самым большим количеством
+    // if (correctCircle.hasOwnProperty(newColor)) {
+    //   correctCircle[newColor] += 1;
+    // } else {
+    //   correctCircle[newColor] = 1;
+    // }
+    // console.log(correctCircle);
+
+    circles.push({
+      x: x1,
+      y: y1,
+      radius: radiusNew,
+      type: randomType,
       color: newColor,
     });
   }
 
   return circles;
 }
-export { checkCoordinates, randomCircle, infoMass };
+export { generateCircle, randomCircle, infoMass };

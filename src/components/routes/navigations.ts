@@ -4,40 +4,45 @@ const navMain = [
   { title: "Тесты", path: "/tests" },
   { title: "Профиль", path: "/profile" },
 ];
-
 const navTests = [
+  { title: "Нарастающая сложность", path: "/tests/increasing-complexity" },
+  { title: "Скорость принятия решений", path: "/tests/speed-decision" },
+  { title: "Периферическое зрение", path: "/tests/peripheral-vision" },
+];
+
+const navTrainings = [
   {
     title: "Green Red Light",
-    path: "/tests/test1",
+    path: "/training/training1",
   },
   {
     title: "Многозадачность",
-    path: "/tests/test2",
+    path: "/training/training2",
   },
   {
     title: "Саккады",
-    path: "/tests/test3",
+    path: "/training/training3",
   },
   {
     title: "Круги",
-    path: "/tests/test4",
+    path: "/training/training4",
   },
   {
     title: "Скорость принятия решения",
-    path: "/tests/test5",
+    path: "/training/training5",
   },
   {
     title: "Рабочая память",
-    path: "/tests/test6",
+    path: "/training/training6",
   },
   {
     title: "Аристотелевская выносливость",
-    path: "/tests/test7",
+    path: "/training/training7",
   },
   {
     title: "Восприятие стресса",
-    path: "/tests/test8",
+    path: "/training/training8",
   },
 ];
 
-export { navMain, navTests };
+export { navMain, navTests, navTrainings };

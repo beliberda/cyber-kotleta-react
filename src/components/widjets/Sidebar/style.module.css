@@ -7,6 +7,8 @@
     padding: 20px;
     position: absolute;
     z-index: 10;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
 
     nav {
         display: flex;
@@ -19,4 +21,42 @@
 
 .active {
     color: rgb(43, 101, 189);
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    gap: 5px;
+
+    input {
+        display: none;
+    }
+
+    span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: var(--background-black);
+
+        /* &::after,
+        &::before {
+            content: "";
+            display: block;
+            width: inherit;
+            height: inherit;
+            background: inherit;
+        } */
+
+    }
+}
+
+.label:has(input:checked)~.sidebar {
+    transform: translateX(0);
 }
