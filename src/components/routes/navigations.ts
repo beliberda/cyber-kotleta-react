@@ -5,8 +5,8 @@ const navMain = [
   { title: "Профиль", path: "/profile" },
 ];
 const navTests = [
-  { title: "Нарастающая сложность", path: "/tests/increasing-complexity" },
   { title: "Скорость принятия решений", path: "/tests/speed-decision" },
+  { title: "Нарастающая сложность", path: "/tests/increasing-complexity" },
   { title: "Периферическое зрение", path: "/tests/peripheral-vision" },
 ];
 
